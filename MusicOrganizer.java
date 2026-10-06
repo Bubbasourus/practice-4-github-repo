@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Iterator;
 
 /**
  * A class to hold details of audio files.
@@ -38,28 +39,30 @@ public class MusicOrganizer
     }
 
     /**
+     * Solution to Question 3 Part II
      * List a file from the collection.
      * @param index The index of the file to be listed.
      */
     public void listFile(int index)
     {
-        if(index >= 0 && index < files.size()) {
+        if(validIndex(index) == true) {
             String filename = files.get(index);
             System.out.println(filename);
         }
     }
 
     /**
+     * Solution to Question 3 Part II
      * Remove a file from the collection.
      * @param index The index of the file to be removed.
      */
     public void removeFile(int index)
     {
-        if(index >= 0 && index < files.size()) {
+        if(validIndex(index) == true) {
             files.remove(index);
         }
     }
-    
+
     /**
      * Solution to Question 1 Part II
      *
@@ -75,4 +78,49 @@ public class MusicOrganizer
             return false;
         }
     }
+
+    /**
+     * Solution to Question 2 Part II
+     *
+     * @param  y  a sample parameter for a method
+     * @return    the sum of x and y
+     */
+    public boolean validIndex(int index)
+    {
+        if ((index < files.size())&&(index >= 0)){
+            return true;
+        } else {
+            return false;
+        }
     }
+    
+    /**
+     * Solution to Question 4-7 Part II
+     *
+     * @param  y  a sample parameter for a method
+     * @return    the sum of x and y
+     */
+    public void listAllFiles(String arrayName)
+    {
+        Iterator<String> it = files.iterator();
+        while (it.hasNext()) {
+            String element = it.next();
+            System.out.println(element);
+        }
+    }
+    
+    /**
+     * Solution to Question 4-7 Part II
+     *
+     * @param  y  a sample parameter for a method
+     * @return    the sum of x and y
+     */
+    public void listWithIndex(String arrayName)
+    {
+        Iterator<String> it = files.iterator();
+        while (it.hasNext()) {
+            String element = it.next();
+            System.out.println(element.indexOf(element) + element);
+        }
+    }
+}
